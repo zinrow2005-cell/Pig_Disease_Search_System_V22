@@ -1,0 +1,26 @@
+{
+  "name": "豬病圖譜搜尋與症狀判斷系統",
+  "short_name": "豬病搜尋",
+  "description": "豬病圖譜、病例追蹤、採樣檢驗、治療成效與牧場疾病風險管理系統。",
+  "lang": "zh-Hant-TW",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
