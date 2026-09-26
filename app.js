@@ -3,7 +3,7 @@ const diseases = window.PIG_DISEASES || [];
 const pigImages = window.PIG_IMAGES || [];
 const taiwanPractice = window.TAIWAN_PRACTICE || {profiles:{},general:{},local_authority:{}};
 const twLicenses = window.TW_LICENSES || {products:[],official_search:"",note:""};
-const APP_VERSION="V23";
+const APP_VERSION="V23.1 FIX";
 function safeJSONStorage(key,fallback){
   try{
     const raw=localStorage.getItem(key);
@@ -1045,6 +1045,18 @@ function taiwanProfileEntries(){
 }
 function renderTaiwanPractice(){
   if(!$("#taiwanDiseaseList"))return;
+  const buildMeta=document.querySelector('meta[name="app-build"]')?.content||APP_VERSION;
+  const hasV23Data=Array.isArray(taiwanPractice.evidence_legend) && !!taiwanPractice.prrs_dynamics && Array.isArray(taiwanPractice.emerging_pathogens);
+  const taiwanPanel=$("#tab-taiwan");
+  let compat=taiwanPanel?.querySelector(".taiwan-version-warning");
+  if(!hasV23Data && taiwanPanel && !compat){
+    compat=document.createElement("div");
+    compat.className="taiwan-version-warning taiwan-alert";
+    compat.innerHTML=`<b>資料版本尚未同步：</b>畫面版本 ${esc(buildMeta)} 已載入，但台灣情報資料仍是舊快取。請重新整理一次；若仍存在，使用 Ctrl+F5 強制更新。`;
+    taiwanPanel.insertBefore(compat,taiwanPanel.children[1]||null);
+  }else if(hasV23Data && compat){
+    compat.remove();
+  }
   const recent=taiwanPractice.recent_updates||[];
   if($("#taiwanRecentAsOf"))$("#taiwanRecentAsOf").textContent=`核對至 ${taiwanPractice.as_of||"—"}`;
   if($("#taiwanRecentUpdates")){
@@ -3710,7 +3722,8 @@ let deferredPrompt;
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;$("#installBtn").classList.remove("hidden");});
 $("#installBtn").onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();deferredPrompt=null;$("#installBtn").classList.add("hidden");};
 if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("sw.js").then(reg=>{
+  navigator.serviceWorker.register("sw.js?v=23.1",{updateViaCache:"none"}).then(reg=>{
+    reg.update().catch(()=>{});
     if(reg.waiting) console.info("New service worker waiting");
   }).catch(err=>{
     console.warn("Service worker registration failed",err);

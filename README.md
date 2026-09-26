@@ -291,3 +291,19 @@ V21 的段落配圖本身沒有漏圖，但原書部分段落會一次引用大�
 - 尚未取得公開講義、原始樣本數、場數、採樣地區、檢體種類與檢驗方法。
 - 不標示為「台灣全國盛行率 70%」。
 - 原始《豬病診治原色圖譜》未收錄 PoSaV，因此此項只存在於「台灣現行／新興病原」層。
+
+
+## V23.1 FIX：GitHub Pages／PWA 快取同步修正
+
+### 修正原因
+V23 首次部署到 GitHub Pages 時，舊 Service Worker 可能仍用快取優先方式提供 V22/V23 舊版 `app.js` 或 `taiwan_data.js`，造成：
+- V23 新版「證據分層／PRRS 台灣情報／新興病原」框架已出現；
+- 但動態資料區塊空白。
+
+### 修正
+- 核心 JS、CSS、Taiwan data 加入 `?v=23.1` 版本戳。
+- `sw.js` 更新為 `pig-disease-v23-1-fix`。
+- HTML 與核心程式／資料改採 network-first。
+- Service Worker 註冊使用 `updateViaCache: "none"` 並主動檢查更新。
+- 圖片仍 cache-first，保留 PWA 離線與速度優勢。
+- 若畫面與資料版本仍不一致，台灣現行頁會顯示版本警告，不再默默空白。
