@@ -3,7 +3,7 @@ const diseases = window.PIG_DISEASES || [];
 const pigImages = window.PIG_IMAGES || [];
 const taiwanPractice = window.TAIWAN_PRACTICE || {profiles:{},general:{},local_authority:{}};
 const twLicenses = window.TW_LICENSES || {products:[],official_search:"",note:""};
-const APP_VERSION="V23.1 FIX";
+const APP_VERSION="V23.3";
 function safeJSONStorage(key,fallback){
   try{
     const raw=localStorage.getItem(key);
@@ -1122,6 +1122,7 @@ function renderTaiwanPractice(){
         <div class="taiwan-current-alert">${esc(x.interpretation||"")}</div>
         <p><b>臨床用途：</b>${esc(x.clinical_use||"")}</p>
         <p class="muted">${esc(x.system_note||"")}</p>
+        ${x.profile?`<button class="primary" onclick="openEmergingPathogen('${esc(x.abbr||x.name||"")}')">查看疾病介紹</button>`:""}
       </article>`;
     }).join("");
   }
@@ -1161,6 +1162,34 @@ function renderTaiwanPractice(){
     </article>`).join(""):`<p class="muted">找不到符合的台灣現行疾病資料。</p>`;
 }
 $("#taiwanSearch")?.addEventListener("input",renderTaiwanPractice);
+
+window.openEmergingPathogen=(key)=>{
+  const x=(taiwanPractice.emerging_pathogens||[]).find(item=>item.abbr===key||item.name===key);
+  if(!x?.profile)return;
+  const p=x.profile;
+  $("#emergingPathogenMeta").textContent=`台灣新興病原 · ${x.source_date||""} · ${x.source||""}`;
+  $("#emergingPathogenTitle").textContent=`${x.name||""}${x.english?`｜${x.english}`:""}${x.abbr?`（${x.abbr}）`:""}`;
+  const list=(title,items)=>items?.length?`<section class="taiwan-section"><h3>${esc(title)}</h3><ul>${items.map(v=>`<li>${esc(v)}</li>`).join("")}</ul></section>`:"";
+  const src=(p.sources||[]).map(x=>`<a href="${x.url}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join("");
+  $("#emergingPathogenBody").innerHTML=`
+    <section class="taiwan-section emerging-highlight"><h3>台灣近期訊息</h3><p>${esc(p.taiwan_note||"")}</p></section>
+    <section class="taiwan-section"><h3>疾病概述</h3><p>${esc(p.overview||"")}</p></section>
+    <section class="taiwan-section"><h3>病原</h3><p>${esc(p.pathogen||"")}</p></section>
+    <section class="taiwan-section"><h3>流行病學／傳播</h3><p>${esc(p.epidemiology||"")}</p></section>
+    <section class="taiwan-section"><h3>好發日齡</h3><p>${esc(p.age_risk||"")}</p></section>
+    <section class="taiwan-section"><h3>臨床症狀</h3><p>${esc(p.clinical||"")}</p></section>
+    <section class="taiwan-section"><h3>病理變化</h3><p>${esc(p.pathology||"")}</p></section>
+    <section class="taiwan-section"><h3>診斷</h3><p>${esc(p.diagnosis||"")}</p></section>
+    ${list("建議採樣",p.sampling)}
+    ${list("鑑別診斷",p.differentials)}
+    <section class="taiwan-section"><h3>治療定位</h3><p>${esc(p.treatment||"")}</p></section>
+    ${list("防治重點",p.control)}
+    <section class="taiwan-section taiwan-alert-section"><h3>結果判讀提醒</h3><p>${esc(p.interpretation||"")}</p></section>
+    <section class="taiwan-section"><h3>資料來源</h3><div class="source-links">${src||"<span class='muted'>無公開來源</span>"}</div></section>
+  `;
+  $("#emergingPathogenDialog").showModal();
+};
+$("#closeEmergingPathogenDialog")?.addEventListener("click",()=>$("#emergingPathogenDialog").close());
 
 window.openTaiwanDisease=(name)=>{
   const p=taiwanPractice.profiles?.[name];if(!p)return;
@@ -3722,7 +3751,7 @@ let deferredPrompt;
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;$("#installBtn").classList.remove("hidden");});
 $("#installBtn").onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();deferredPrompt=null;$("#installBtn").classList.add("hidden");};
 if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("sw.js?v=23.1",{updateViaCache:"none"}).then(reg=>{
+  navigator.serviceWorker.register("sw.js?v=23.3",{updateViaCache:"none"}).then(reg=>{
     reg.update().catch(()=>{});
     if(reg.waiting) console.info("New service worker waiting");
   }).catch(err=>{

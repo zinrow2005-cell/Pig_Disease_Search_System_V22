@@ -274,3 +274,270 @@ dialog{width:min(1050px,96vw);max-height:92vh;border:0;border-radius:22px;paddin
 @media(max-width:760px){
   .taiwan-evidence-legend,.taiwan-intel-list,.taiwan-emerging-list{grid-template-columns:1fr}
 }
+
+
+/* V23.2 PRINT FIX — 疾病處置決策卡 */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 11mm 13mm;
+  }
+
+  html, body {
+    width: auto !important;
+    min-width: 0 !important;
+    background: #fff !important;
+    color: #111827 !important;
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 只列印目前的疾病處置卡 */
+  .topbar,
+  .tabs,
+  .action-selector,
+  #actionEmpty,
+  #printActionPlan,
+  #resetActionChecklist,
+  #openActionDiseaseDetail,
+  .action-hero-buttons {
+    display: none !important;
+  }
+
+  .panel {
+    display: none !important;
+  }
+
+  #tab-action {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  #tab-action > .organ-header {
+    display: block !important;
+    margin: 0 0 5mm !important;
+    padding: 0 !important;
+  }
+
+  #tab-action > .organ-header h2 {
+    margin: 0 0 1.5mm !important;
+    font-size: 18pt !important;
+    line-height: 1.2 !important;
+  }
+
+  #tab-action > .organ-header .eyebrow {
+    margin-bottom: 1mm !important;
+  }
+
+  #tab-action > .organ-header .muted {
+    margin: 0 !important;
+    font-size: 9pt !important;
+    line-height: 1.4 !important;
+  }
+
+  #actionPlan,
+  #actionPlan.hidden {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 疾病抬頭縮成列印友善版本，避免第一頁被吃掉太多空間 */
+  #tab-action .action-hero {
+    display: block !important;
+    background: #f8fafc !important;
+    color: #111827 !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 3mm !important;
+    padding: 4mm 5mm !important;
+    margin: 0 0 3mm !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  #tab-action .action-hero h2 {
+    margin: 1mm 0 1.5mm !important;
+    font-size: 16pt !important;
+    line-height: 1.2 !important;
+  }
+
+  #tab-action .chips {
+    gap: 1.2mm !important;
+  }
+
+  #tab-action .badge {
+    border: 1px solid #cbd5e1 !important;
+    background: #fff !important;
+    color: #334155 !important;
+    padding: 0.8mm 1.8mm !important;
+    font-size: 8pt !important;
+  }
+
+  #tab-action .action-alert {
+    margin: 0 0 4mm !important;
+    padding: 3mm 4mm !important;
+    border: 1px solid #f59e0b !important;
+    border-radius: 2.5mm !important;
+    background: #fff7ed !important;
+    color: #7c2d12 !important;
+    font-size: 9pt !important;
+    line-height: 1.45 !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /*
+   * 關鍵修正：
+   * 網頁版是雙欄 + action-card break-inside:avoid，
+   * 瀏覽器會把整張卡推到下一頁，造成第一頁大片空白。
+   * 列印改成單欄，長卡允許自然跨頁，只保護標題與單一清單項目。
+   */
+  #tab-action .action-grid {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  #tab-action .action-card,
+  #tab-action .action-card-wide {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    grid-column: auto !important;
+    margin: 0 0 4mm !important;
+    padding: 3.5mm 4mm !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 2.5mm !important;
+    background: #fff !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    overflow: visible !important;
+  }
+
+  #tab-action .urgent-card {
+    border-color: #fca5a5 !important;
+    background: #fffafa !important;
+  }
+
+  #tab-action .action-card-head {
+    display: flex !important;
+    align-items: center !important;
+    gap: 2mm !important;
+    margin: 0 0 2.5mm !important;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  #tab-action .action-card-head > span:first-child {
+    width: 7mm !important;
+    height: 7mm !important;
+    min-width: 7mm !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #f1f5f9 !important;
+    font-size: 9pt !important;
+  }
+
+  #tab-action .action-card-head h3 {
+    font-size: 12.5pt !important;
+    line-height: 1.25 !important;
+  }
+
+  #tab-action .checklist {
+    display: block !important;
+  }
+
+  #tab-action .check-row {
+    display: flex !important;
+    gap: 2mm !important;
+    margin: 0 0 1.6mm !important;
+    padding: 2.2mm 2.5mm !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 1.8mm !important;
+    background: #fff !important;
+    line-height: 1.4 !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  #tab-action .check-row input[type="checkbox"] {
+    width: 3.5mm !important;
+    height: 3.5mm !important;
+    min-width: 3.5mm !important;
+    margin: 0.4mm 0 0 !important;
+  }
+
+  #tab-action .source-box {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    white-space: pre-wrap !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: #1f2937 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.52 !important;
+  }
+
+  #tab-action .metric-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2mm !important;
+  }
+
+  #tab-action .metric {
+    padding: 2.5mm !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 1.8mm !important;
+    background: #fff !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  #tab-action .metric input {
+    display: none !important;
+  }
+
+  #tab-action .metric b {
+    margin-bottom: 1mm !important;
+  }
+
+  /* 避免頁底只留下標題，並減少瀏覽器預設 margins 對版面的干擾 */
+  #tab-action h2,
+  #tab-action h3,
+  #tab-action h4 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  #tab-action p,
+  #tab-action li,
+  #tab-action .source-box {
+    orphans: 3;
+    widows: 3;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+}
+
+/* V23.3 PoSaV 完整疾病介紹 */
+#emergingPathogenDialog{max-width:980px;width:min(94vw,980px)}
+#emergingPathogenDialog .taiwan-dialog-body{max-height:78vh;overflow:auto}
+.emerging-highlight{background:#fff7ed;border-left:4px solid #d97706}
+#emergingPathogenDialog .taiwan-section ul{margin:8px 0 0;padding-left:20px}
+#emergingPathogenDialog .taiwan-section li{margin:6px 0;line-height:1.6}

@@ -1,5 +1,5 @@
-const CACHE="pig-disease-v23-1-fix";
-const VER="23.1";
+const CACHE="pig-disease-v23-3-posav";
+const VER="23.3";
 const CORE=[
   "./",
   "./index.html",

@@ -310,7 +310,59 @@ window.TAIWAN_PRACTICE = {
       "interpretation": "此 70% 為特定課程中口述的近期檢驗資訊；目前未取得公開講義、檢驗樣本數、場數、採樣地區、檢體種類、檢驗方法與病例定義，因此不可標示為『台灣全國盛行率 70%』。",
       "clinical_use": "在哺乳仔豬腹瀉病例中，可把 PoSaV 納入新興腸道病毒鑑別清單，並與 PEDV、TGEV、輪狀病毒、E. coli、Clostridium perfringens 等共同判讀。",
       "system_note": "原始圖譜未收錄 PoSaV，因此本項只出現在『台灣現行／新興病原』層，不偽裝成原書疾病條目。",
-      "url": ""
+      "url": "",
+      "profile": {
+        "overview": "豬沙波病毒（Porcine sapovirus, PoSaV）屬杯狀病毒科（Caliciviridae）Sapovirus 屬，是豬隻腸道病毒之一。豬源 SaV 已知基因群多樣，其中 GIII 是目前全球豬隻最常見的基因群之一。PoSaV 可造成仔豬腸炎與腹瀉，但田間病例常與其他腸道病原共同感染，因此檢出陽性不等於它一定是唯一病因。",
+        "pathogen": "無套膜、單股正鏈 RNA 病毒。病毒粒子約 30–40 nm。豬源 Sapovirus 基因型高度多樣，GIII 為重要豬源基因群。",
+        "epidemiology": "可感染不同日齡豬隻；公開研究與產業資料指出，哺乳、離乳及離乳後階段均可能檢出。病毒可由糞便大量排出，並可在環境中維持相對穩定。田間常見與輪狀病毒、豬腸道冠狀病毒或大腸桿菌等共同檢出。",
+        "age_risk": "新生／哺乳仔豬與離乳前後是重要觀察族群。實驗性 GIII 感染可在新生仔豬造成腹瀉與近端小腸病變；近期國際產業資料亦強調離乳與離乳後豬隻的腹瀉、離乳重下降與生長表現損失。",
+        "clinical": "主要表現為水樣或軟便、腹瀉、脫水、精神與採食下降、生長受阻；部分感染豬可無明顯臨床症狀但仍排毒。由於症狀沒有特異性，不能單靠臨床外觀確診。",
+        "pathology": "實驗性感染可見十二指腸為主、空腸次之的小腸絨毛萎縮、變短與扁平，局部可有上皮剝離。病毒主要在絨毛上皮細胞複製；病變嚴重程度可由輕至重。",
+        "diagnosis": "目前常用的是糞便或腸內容物的 conventional / real-time RT-PCR。陽性結果應結合 Ct 值、臨床症狀、病理與其他腸道病原檢測共同判讀；若要確認因果關係，單純 PCR 陽性證據不足。",
+        "sampling": [
+          "急性腹瀉仔豬的新鮮糞便或直腸拭子。",
+          "新鮮死亡或安樂死病例可採小腸內容物與十二指腸／空腸組織。",
+          "若要釐清主要病因，建議同時檢測 PEDV、TGEV、Rotavirus、E. coli、Clostridium perfringens 等重要腸道病原。",
+          "採樣時記錄日齡、是否腹瀉、嚴重度、死亡率與是否曾治療，方便和 Ct 值及病理一起判讀。"
+        ],
+        "differentials": [
+          "豬流行性腹瀉（PEDV）",
+          "豬傳染性胃腸炎（TGEV）",
+          "豬輪狀病毒病（Rotavirus）",
+          "仔豬大腸桿菌病（ETEC / E. coli）",
+          "仔豬梭菌性腸炎（Clostridium perfringens）",
+          "球蟲病",
+          "其他新興腸道病毒，例如豬星狀病毒"
+        ],
+        "treatment": "目前沒有可直接清除 PoSaV 的特異性藥物。處置重點是補液、電解質與酸鹼平衡、維持保溫與採食／飲水，並針對經診斷確認的細菌性併發感染由獸醫師決定是否需要抗菌藥。不要因為 PCR 陽性就直接把抗菌藥當作 PoSaV 治療。",
+        "control": [
+          "強化產房與保育舍全進全出、清洗、乾燥與消毒。",
+          "避免不同日齡豬隻、器具與人員交叉污染，尤其糞便污染動線。",
+          "腹瀉病例優先補充水分與電解質，降低脫水造成的死亡與生長損失。",
+          "建立同批次日齡別 PCR／Ct 與腹瀉率追蹤，不只看單次陽性率。",
+          "目前公開研究仍在評估疫苗與抗體策略；不應把實驗性／研究中疫苗視為台灣現行常規免疫方案。"
+        ],
+        "interpretation": "PoSaV 陽性率高不等於所有陽性仔豬都因 PoSaV 發病。公開回顧指出，部分研究在腹瀉豬與非腹瀉豬可得到相近檢出率，且共同感染很常見，因此最重要的是把病毒量、臨床、病理與其他病原一起判讀。",
+        "taiwan_note": "115/09/15 嘉義大學郭泓志教授課堂口述指出，近期在哺乳豬身上驗出札幌病毒，陽性率約 70%。本系統將此列為『課堂口述』層級；在未取得原始樣本數、場數、檢驗方法與採樣範圍前，不把 70% 解讀為台灣全國盛行率。",
+        "sources": [
+          {
+            "label": "Porcine sapoviruses: Pathogenesis, epidemiology, genetic diversity, and diagnosis（2020 review）",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7255249/"
+          },
+          {
+            "label": "SHIC 2025／2026 PoSaV 研究摘要與產業更新",
+            "url": "https://www.swinehealth.org/2025/"
+          },
+          {
+            "label": "SHIC 2026-06 Porcine Sapovirus Study",
+            "url": "https://www.swinehealth.org/june-2026-shic-enewsletter/"
+          },
+          {
+            "label": "SHIC Porcine Sapovirus Fact Sheet index",
+            "url": "https://www.swinehealth.org/fact-sheets/"
+          }
+        ]
+      }
     }
   ]
 };
