@@ -3,7 +3,7 @@ const diseases = window.PIG_DISEASES || [];
 const pigImages = window.PIG_IMAGES || [];
 const taiwanPractice = window.TAIWAN_PRACTICE || {profiles:{},general:{},local_authority:{}};
 const twLicenses = window.TW_LICENSES || {products:[],official_search:"",note:""};
-const APP_VERSION="V22";
+const APP_VERSION="V23";
 function safeJSONStorage(key,fallback){
   try{
     const raw=localStorage.getItem(key);
@@ -1059,6 +1059,59 @@ function renderTaiwanPractice(){
         ${x.interpretation?`<div class="taiwan-interpretation">${esc(x.interpretation)}</div>`:""}
         ${x.url?`<a class="secondary official-source-btn" href="${x.url}" target="_blank" rel="noopener">官方來源</a>`:""}
       </article>`).join(""):`<p class="muted">目前沒有近期官方更新。</p>`;
+  }
+
+  const evidence=taiwanPractice.evidence_legend||[];
+  if($("#taiwanEvidenceLegend")){
+    $("#taiwanEvidenceLegend").innerHTML=evidence.map(x=>`
+      <div class="evidence-legend-item evidence-${esc(x.key)}">
+        <span class="badge">${esc(x.label)}</span>
+        <span>${esc(x.description||"")}</span>
+      </div>`).join("");
+  }
+
+  const prrs=taiwanPractice.prrs_dynamics||{};
+  if($("#taiwanPrrsSummary")){
+    $("#taiwanPrrsSummary").innerHTML=prrs.summary?`<div class="taiwan-prrs-hero">${esc(prrs.summary)}</div>`:"";
+  }
+  if($("#taiwanPrrsDynamics")){
+    $("#taiwanPrrsDynamics").innerHTML=(prrs.items||[]).map(x=>{
+      const label=(evidence.find(e=>e.key===x.evidence)||{}).label||x.evidence||"資料";
+      return `<article class="taiwan-intel-item evidence-${esc(x.evidence||"")}">
+        <div class="taiwan-intel-head">
+          <span class="badge">${esc(label)}</span>
+          <h4>${esc(x.title||"")}</h4>
+        </div>
+        <p>${esc(x.detail||"")}</p>
+        <div class="taiwan-intel-source">${esc(x.source_label||"")}</div>
+        ${x.url?`<a class="secondary official-source-btn" href="${x.url}" target="_blank" rel="noopener">查看來源</a>`:""}
+      </article>`;
+    }).join("");
+  }
+  if($("#taiwanPrrsManagement")){
+    $("#taiwanPrrsManagement").innerHTML=(prrs.management_points||[]).length
+      ?`<h4>牧場管理重點</h4><ul>${prrs.management_points.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:"";
+  }
+
+  if($("#taiwanEmergingPathogens")){
+    $("#taiwanEmergingPathogens").innerHTML=(taiwanPractice.emerging_pathogens||[]).map(x=>{
+      const label=(evidence.find(e=>e.key===x.evidence)||{}).label||x.evidence||"資料";
+      return `<article class="taiwan-emerging-item evidence-${esc(x.evidence||"")}">
+        <div class="taiwan-intel-head">
+          <span class="badge">${esc(label)}</span>
+          <h4>${esc(x.name||"")}${x.abbr?`（${esc(x.abbr)}）`:""}</h4>
+        </div>
+        <div class="taiwan-emerging-meta">
+          <span>${esc(x.source_date||"")}</span>
+          <span>${esc(x.source||"")}</span>
+          <span>${esc(x.population||"")}</span>
+        </div>
+        <p><b>課堂／田間訊息：</b>${esc(x.finding||"")}</p>
+        <div class="taiwan-current-alert">${esc(x.interpretation||"")}</div>
+        <p><b>臨床用途：</b>${esc(x.clinical_use||"")}</p>
+        <p class="muted">${esc(x.system_note||"")}</p>
+      </article>`;
+    }).join("");
   }
 
   const loc=taiwanPractice.local_authority||{};

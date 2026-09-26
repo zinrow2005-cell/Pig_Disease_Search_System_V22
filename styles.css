@@ -250,3 +250,27 @@ dialog{width:min(1050px,96vw);max-height:92vh;border:0;border-radius:22px;paddin
 .taiwan-alert-section{border-left:4px solid #f59e0b}
 .official-source-btn{display:inline-block;margin-top:4px}
 @media(max-width:760px){.taiwan-recent-updates{grid-template-columns:1fr}}
+
+/* V23 台灣 PRRS／新興病原情報 */
+.taiwan-evidence-legend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.evidence-legend-item{display:flex;gap:9px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;line-height:1.5}
+.taiwan-prrs-hero{padding:13px 14px;border-radius:13px;background:#eef6ff;border:1px solid #cfe3ff;line-height:1.7;font-weight:700;margin-bottom:12px}
+.taiwan-intel-list,.taiwan-emerging-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.taiwan-intel-item,.taiwan-emerging-item{border:1px solid var(--line);border-radius:14px;padding:13px;background:#fff}
+.taiwan-intel-head{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap}
+.taiwan-intel-head h4{margin:1px 0 5px;flex:1;min-width:180px}
+.taiwan-intel-item p,.taiwan-emerging-item p{line-height:1.65}
+.taiwan-intel-source,.taiwan-emerging-meta{font-size:12px;color:var(--muted);margin:6px 0 8px}
+.taiwan-emerging-meta{display:flex;gap:8px;flex-wrap:wrap}
+.taiwan-emerging-meta span{padding:4px 7px;background:#f8fafc;border-radius:999px}
+.taiwan-management-points{margin-top:12px;padding:12px 14px;background:#f8fafc;border-radius:13px;border:1px solid var(--line)}
+.taiwan-management-points h4{margin:0 0 7px}
+.taiwan-management-points ul{margin:0;padding-left:20px}
+.taiwan-management-points li{margin:6px 0;line-height:1.55}
+.evidence-peer_reviewed{border-left:4px solid #2563eb}
+.evidence-official{border-left:4px solid #059669}
+.evidence-lecture{border-left:4px solid #d97706}
+.evidence-field{border-left:4px solid #7c3aed}
+@media(max-width:760px){
+  .taiwan-evidence-legend,.taiwan-intel-list,.taiwan-emerging-list{grid-template-columns:1fr}
+}

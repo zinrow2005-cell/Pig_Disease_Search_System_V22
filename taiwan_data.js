@@ -1,5 +1,5 @@
 window.TAIWAN_PRACTICE = {
-  "as_of": "2026-09-25",
+  "as_of": "2026-09-26",
   "region": "台灣",
   "local_authority": {
     "name": "雲林縣動植物防疫所",
@@ -135,7 +135,7 @@ window.TAIWAN_PRACTICE = {
       "display_name": "豬繁殖與呼吸綜合症（PRRS）",
       "priority": "高",
       "legal_status": "本 V10 不把 PRRS 標示為甲類法定疫病；場內處置重點為診斷、病毒壓力控制、生物安全與繁殖／保育管理。",
-      "taiwan_status": "截至 2026-09-25，本系統已核對的台灣動物用藥品許可資料仍可查到 PRRS 活毒與不活化疫苗許可。PRRS 與 ASF／FMD／豬瘟的法定防疫定位不同，應以場內穩定度、病毒學檢測、後備馴化、批次與生物安全共同管理。",
+      "taiwan_status": "台灣目前以 PRRSV-2 為主；Lineage 3 長期占優勢且已有高度毒力株被實驗證實。2018–2024 資料同時顯示 Lineage 1 / L1A 增加，並與母豬高死亡率及流產相關；台灣亦已發現 Lineage 3 與 NADC30-like／NADC34-like PRRSV-2 的重組。",
       "vaccine": "已查到台灣核准的 PRRS 活毒與不活化疫苗產品；部分許可證明載『限由執業獸醫師（佐）監督之下使用』。不可把某一產品直接當成所有場的固定免疫程序。",
       "treatment": "抗菌藥不會直接清除 PRRS 病毒；若要使用抗菌藥，應以併發細菌感染、實際病程與獸醫師處方為依據。",
       "farm_action": [
@@ -146,6 +146,22 @@ window.TAIWAN_PRACTICE = {
       ],
       "sampling": "常見會依病例階段考慮血液／血清、口腔液、組織或其他適當檢體；實際檢體選擇應依檢驗目的、病程與獸醫師／實驗室建議。",
       "sources": [
+        {
+          "label": "台灣 2018–2024 PRRSV-2 Lineage 1 / Lineage 3 共循環",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40414106/"
+        },
+        {
+          "label": "台灣高度毒力 Lineage 3 PRRSV-2 研究",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39721904/"
+        },
+        {
+          "label": "台灣 Lineage 3 與 NADC30/NADC34-like 重組研究",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40303181/"
+        },
+        {
+          "label": "農業部獸醫研究所－2023 豬隻病毒性疾病檢診結果",
+          "url": "https://vettech.nvri.gov.tw/view.php?font-size=m&id=2872&subtheme=&theme=web_structure"
+        },
         {
           "label": "台灣動物用藥品－PREVACENT PRRS 活毒疫苗",
           "url": "https://amdrug2.aphia.gov.tw/license-query/detail/28810"
@@ -159,7 +175,7 @@ window.TAIWAN_PRACTICE = {
           "url": "https://amdrug2.aphia.gov.tw/license-query/detail/11227"
         }
       ],
-      "current_alert": "不要把單次抗體陽性／陰性直接等同於母豬群穩定或不穩定；病毒學結果與生產表現仍需一起判讀。"
+      "current_alert": "近期管理上不宜再只把 PRRS 高病毒量風險鎖在 4–9 週齡。若場內病毒循環持續，應把 13–18 週齡甚至更後段納入 PCR／病毒量追蹤；母豬及公豬重症／死亡亦應列入警戒。"
     }
   },
   "verified_sources_date": "2026-09-25",
@@ -195,6 +211,106 @@ window.TAIWAN_PRACTICE = {
       "summary": "農業部表示臺灣於 2026-04-06 獲 WOAH 核可，恢復為非洲豬瘟自我聲明非疫區，並恢復為口蹄疫、豬瘟、非洲豬瘟三大豬病非疫國。",
       "interpretation": "V21.1 以前若仍顯示『已提出申請』，已屬過時資訊，本版已修正。",
       "url": "https://asf.aphia.gov.tw/theme_data.php?id=21546&sub_theme=asf&theme=NewInfoListWS"
+    }
+  ],
+  "evidence_legend": [
+    {
+      "key": "peer_reviewed",
+      "label": "期刊／研究",
+      "description": "公開研究或同儕審查論文，可追溯研究對象與方法。"
+    },
+    {
+      "key": "official",
+      "label": "官方資料",
+      "description": "政府機關、官方監測或法規資料。"
+    },
+    {
+      "key": "lecture",
+      "label": "課堂口述",
+      "description": "講師課堂口述資訊；未取得公開講義、原始數據或完整方法時，不視為全台盛行率。"
+    },
+    {
+      "key": "field",
+      "label": "田間觀察",
+      "description": "近期臨床／檢驗現場觀察；用於提高警覺，不直接外推為全台流行率。"
+    }
+  ],
+  "prrs_dynamics": {
+    "title": "台灣 PRRS 疫情動態",
+    "updated": "2026-09-26",
+    "summary": "台灣近年以 PRRSV-2 為主。Lineage 3 長期占優勢且已有高度毒力株被實驗證實；同時 Lineage 1 / L1A 在 2018–2024 間增加，並與母豬高死亡率與流產相關。台灣亦已發現 Lineage 3 與 NADC30-like／NADC34-like PRRSV-2 的重組。",
+    "items": [
+      {
+        "evidence": "peer_reviewed",
+        "title": "Lineage 3 長期占優勢",
+        "detail": "2018–2024 台灣研究分析 501 株完整 ORF5 序列，其中 Lineage 3 為 384/501（76.6%），Lineage 1 / L1A 為 117/501（23.4%）。",
+        "source_label": "Veterinary Microbiology 2025",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40414106/"
+      },
+      {
+        "evidence": "official",
+        "title": "2023 官方檢診分離株皆屬 PRRSV-2 Lineage 3",
+        "detail": "農業部獸醫研究所 2023 年豬隻病毒性疾病檢診資料中，PRRSV 分離陽性 14 場；基因定序與親緣分析顯示分離株皆屬 PRRSV-2 Lineage 3。",
+        "source_label": "農業部獸醫研究所 2024 年研報",
+        "url": "https://vettech.nvri.gov.tw/view.php?font-size=m&id=2872&subtheme=&theme=web_structure"
+      },
+      {
+        "evidence": "peer_reviewed",
+        "title": "台灣已證實高度毒力 Lineage 3",
+        "detail": "屏東分離株 NPUST-108-929/2019 屬 PRRSV-2 Lineage 3。攻毒試驗可造成高熱、嚴重臨床症狀、明顯體重下降與高病毒血症；高劑量攻毒組出現死亡。",
+        "source_label": "Journal of Microbiology, Immunology and Infection 2024",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39721904/"
+      },
+      {
+        "evidence": "peer_reviewed",
+        "title": "Lineage 1 / L1A 與母豬高死亡及流產相關",
+        "detail": "2018–2024 台灣研究中，117 株 Lineage 1 PRRSV-2 有 103 株（88.0%）來自母豬相關檢體；研究指出 Lineage 1 PRRSV-2 與母豬高死亡率及流產相關，並已擴散至全台。",
+        "source_label": "Veterinary Microbiology 2025",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40414106/"
+      },
+      {
+        "evidence": "peer_reviewed",
+        "title": "已發現 Lineage 3 × NADC30/NADC34-like 重組",
+        "detail": "2020–2023 台灣分離株研究顯示存在 Lineage 3 與 NADC30-like／NADC34-like PRRSV-2 的潛在重組，支持台灣場內病毒持續演化與重組的風險。",
+        "source_label": "Transboundary and Emerging Diseases 2024",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40303181/"
+      },
+      {
+        "evidence": "field",
+        "title": "病毒壓力可能延伸到較大日齡",
+        "detail": "近期田間／課程資訊指出，過往較常把 4–9 週齡視為高病毒量重要窗口，但目前有場次在 18 週齡仍可見高病毒量。此訊息用於提醒監測日齡不要只停在保育早期；目前未取得可支持『全台 18 週齡普遍高病毒量』的公開全國資料。",
+        "source_label": "近期田間／課程資訊（原始資料待補）",
+        "url": ""
+      },
+      {
+        "evidence": "field",
+        "title": "成年種豬重症風險",
+        "detail": "近期田間資訊顯示強毒 PRRS 事件可造成母豬明顯死亡與繁殖障礙，也可能見到公豬重症甚至死亡。系統將此列為場內警戒，不把它外推成所有 Lineage 3 的固定表現。",
+        "source_label": "近期田間資訊（原始資料待補）",
+        "url": ""
+      }
+    ],
+    "management_points": [
+      "不要只用『Lineage 3』三個字直接等同固定毒力；毒力仍應結合臨床、死亡率、病毒量、序列與場內流行病學判讀。",
+      "採樣設計不要只鎖定 4–9 週齡；若場內問題持續，應把 13–18 週齡甚至更後段納入 PCR／病毒量追蹤。",
+      "種豬場除了母豬繁殖指標，也應追蹤公豬發燒、採食、精液品質、死亡與 PCR 狀態。",
+      "出現母豬高死亡、流產、仔豬弱仔、保育呼吸道與肉豬延遲病毒血症時，應視為同一條場內病毒循環鏈一起分析。"
+    ]
+  },
+  "emerging_pathogens": [
+    {
+      "name": "札幌病毒／豬沙波病毒",
+      "english": "Porcine sapovirus",
+      "abbr": "PoSaV",
+      "evidence": "lecture",
+      "source_date": "2026-09-15",
+      "source": "嘉義大學郭泓志教授課堂口述",
+      "population": "哺乳豬",
+      "finding": "課堂口述指出近期在哺乳豬檢出札幌病毒，陽性率約 70%。",
+      "interpretation": "此 70% 為特定課程中口述的近期檢驗資訊；目前未取得公開講義、檢驗樣本數、場數、採樣地區、檢體種類、檢驗方法與病例定義，因此不可標示為『台灣全國盛行率 70%』。",
+      "clinical_use": "在哺乳仔豬腹瀉病例中，可把 PoSaV 納入新興腸道病毒鑑別清單，並與 PEDV、TGEV、輪狀病毒、E. coli、Clostridium perfringens 等共同判讀。",
+      "system_note": "原始圖譜未收錄 PoSaV，因此本項只出現在『台灣現行／新興病原』層，不偽裝成原書疾病條目。",
+      "url": ""
     }
   ]
 };

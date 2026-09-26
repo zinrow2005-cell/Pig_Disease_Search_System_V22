@@ -1,4 +1,4 @@
-const CACHE="pig-disease-v22";
+const CACHE="pig-disease-v23";
 const CORE=[
   "./","./index.html","./styles.css","./app.js","./data.js",
   "./taiwan_data.js","./license_data.js","./manifest.webmanifest",
